@@ -1,7 +1,9 @@
 # Solemne-02
+
 Desarrollo de solemne 02 Pensamiento Computacional
 
 Link de P5js editable: https://editor.p5js.org/rocio.diaz3/sketches/H_KJ_hsKj
+
 Link de P5js solo vista: https://editor.p5js.org/rocio.diaz3/sketches/H_KJ_hsKj
 
 <img width="495" height="498" alt="image" src="https://github.com/user-attachments/assets/6980569f-c947-4eb4-acbd-24864dfad216" />
