@@ -1,0 +1,72 @@
+//Tamaño de círculos
+let tamanoBase = 30;
+//Rango de tamaño cuando el mouse interactúe
+let rangoEfecto = 300;
+
+function setup() {
+  createCanvas(500, 500);
+  //Se desactiva el trazo
+  noStroke();
+}
+
+function draw() {
+  //Fondo oscuro del canvas para más contraste
+  background(20);
+
+  //Asegura que todos los círculos se dibujen desde su centro exacto
+  ellipseMode(CENTER);
+
+  //Grilla de filas y columnas de círculos cubriendo todo el canvas
+  for (let x = 20; x < width; x += 35) {
+    for (let y = 20; y < height; y += 35) {
+      
+      //Calcular distancia entre el mouse y el círculo actual
+      let d = dist(mouseX, mouseY, x, y);
+      
+      //Deformación esférica
+      let angle = atan2(y - mouseY, x - mouseX);
+      
+      //Lente virtual que comprime el espacio cerca del mouse
+      let newD = d;
+      if (d < rangoEfecto && d > 0) {
+        // La matemática de fisheye comprime la distancia cerca del mouse
+        //Curvatura del el lente "ojo de pez".
+        newD = rangoEfecto * Math.pow(d / rangoEfecto, 1 / 1.5); // El 1.5 controla la intensidad del lente
+      }
+
+      //Coordenadas desplazadas (desX, desY) basándonos en el lente
+      let desX = mouseX + cos(angle) * newD;
+      let desY = mouseY + sin(angle) * newD;
+      
+      //Si está cerca del mouse, el tamaño aumenta
+      let tam = map(d, 0, rangoEfecto, 55, tamanoBase, true);
+      
+      //Colores usados
+      let colorAzul = color(12, 30, 155);  //Azul (#0C1E69)
+      let colorAmarillo = color(248, 196, 73);  //Amarillo (#F8C449)
+
+      //Cantidad de mezcla (de 1 a 0 para que el centro sea amarillo completo)
+      let factorMezcla = map(d, 0, rangoEfecto, 1, 0, true);
+
+      //Crea el color intermedio sutil para la transición continua
+      let colorCirculo = lerpColor(colorAzul, colorAmarillo, factorMezcla);
+      
+      // Si el mouse está cerca (a menos de 30 píxeles) aumenta de tamaño (+2)
+      if (d < 30) {
+        tam = tam + 2; 
+      }
+
+      dibujarElemento(desX, desY, tam, colorCirculo);
+    }
+  }
+}
+
+// Función propia que recibe los datos y dibuja cada círculo en el lienzo
+function dibujarElemento(posX, posY, diametro, col) {
+  
+  // Asigna el color recibido
+  fill(col);
+  
+  // Dibuja el círculo en la posición exacta con el tamaño correspondiente
+  ellipse(posX, posY, diametro, diametro);
+}
