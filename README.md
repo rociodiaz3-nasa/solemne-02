@@ -3,6 +3,7 @@ Desarrollo de solemne 02 Pensamiento Computacional
 
 Link de P5js editable: https://editor.p5js.org/rocio.diaz3/sketches/H_KJ_hsKj
 Link de P5js solo vista: https://editor.p5js.org/rocio.diaz3/sketches/H_KJ_hsKj
+
 <img width="495" height="498" alt="image" src="https://github.com/user-attachments/assets/6980569f-c947-4eb4-acbd-24864dfad216" />
 Tomando como referencia estética las estructuras geométricas del movimiento Op Art (Arte Óptico). El objetivo principal del sistema es explorar cómo el código algorítmico puede transformar una grilla estática y bidimensional en una composición orgánica, tridimensional y dinámica que responde de forma directa a la presencia del usuario.Para
 lograrlo, se diseñó e implementó un modelo matemático de distorsión esférica (ojo de pez) basado en potencias no lineales, el cual remapea las coordenadas espaciales y manipula tanto la escala como la transición cromática de los elementos en función de la distancia al cursor.
